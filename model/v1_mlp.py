@@ -22,8 +22,8 @@ Xtr, Ytr = torch.from_numpy(data_tr[:, 1:]).to(device), torch.from_numpy(data_tr
 Xval, Yval = torch.from_numpy(data_val[:, 1:]).to(device), torch.from_numpy(data_val[:, 0]).to(device)
 
 torch.manual_seed(42)
-epochs = 50000
-epoch_itr = 7500
+epochs = 10000
+epoch_itr = 1000
 batch_size = 32
 n_hidden_units = 128
 learning_rate = 1e-3
@@ -33,15 +33,15 @@ class Model_v1(nn.Module):
     def __init__(self, n_in: int, n_hidden: int, n_out: int):
         super().__init__()
         self.block1 = nn.Sequential(
-            nn.Linear(n_in, n_hidden),
+            nn.Conv1d(in_channels=n_in, out_channels=n_hidden, kernel_size=3, padding=1),
             nn.ReLU(),
-            nn.BatchNorm1d(n_hidden),
+            nn.MaxPool1d(2),
             nn.Dropout(dropout),
         )
         self.block2 = nn.Sequential(
-            nn.Linear(n_hidden, n_hidden),
+            nn.Conv1d(in_channels=n_hidden, out_channels=n_hidden, kernel_size=3, padding=1),
             nn.ReLU(),
-            nn.BatchNorm1d(n_hidden),
+            nn.MaxPool1d(2),
             nn.Dropout(dropout),
         )
         self.block3 = nn.Sequential(
@@ -100,5 +100,8 @@ with torch.inference_mode():
                      y_true=Yval)
     print(f'Accuracy: {acc:.2f}%')
 
+# 1.
 # val loss: 1.4578
 # acc: 81.65%
+
+# 2.
