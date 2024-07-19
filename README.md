@@ -3,7 +3,7 @@
 2. Train a LTCN to classify these images
 3. Use LTCN on minimal hardware (maybe for a robotics implementation?)
 
-![Sample Images](sample_images.png)
+![Sample Images](assets/sample_images.png)
 
 ### Dataset: `hirise-map-proj-v3_2`
 If you don't want to run `prepare_data.py` and transform the data into a csv yourself, you 
