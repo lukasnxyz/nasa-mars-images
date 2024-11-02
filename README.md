@@ -1,7 +1,5 @@
 ### Nasa Mars Images
-1. Train a CNN to classify these images
-2. Train a LTCN to classify these images
-3. Use LTCN on minimal hardware (maybe for a robotics implementation?)
+(maybe for a robotics implementation?)
 
 ![Sample Images](assets/sample_images.png)
 
