@@ -31,7 +31,7 @@ for filename in tqdm(os.listdir(dataset_path), desc='Converting images'):
 print(f'images transformed: {len(data)}')
 
 # save images/labels to csv file
-output_csv = 'data/nasa_mars_images.csv' 
+output_csv = 'data/nasa_mars_images.csv'
 with open(output_csv, mode='w', newline='') as csv_file:
   writer = csv.writer(csv_file)
   print('saving transformed images')
